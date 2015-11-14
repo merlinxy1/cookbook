@@ -187,6 +187,10 @@
     <Compile Include="Migrations\201511061316481_DataAnnotations.Designer.cs">
       <DependentUpon>201511061316481_DataAnnotations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511141443057_pictureUrl.cs" />
+    <Compile Include="Migrations\201511141443057_pictureUrl.Designer.cs">
+      <DependentUpon>201511141443057_pictureUrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -268,9 +272,11 @@
     <Content Include="Views\Movies\Details.cshtml" />
     <Content Include="Views\Movies\Edit.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\PictureUpload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -289,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511061316481_DataAnnotations.resx">
       <DependentUpon>201511061316481_DataAnnotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511141443057_pictureUrl.resx">
+      <DependentUpon>201511141443057_pictureUrl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

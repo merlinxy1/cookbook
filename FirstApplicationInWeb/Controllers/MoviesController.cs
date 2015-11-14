@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FirstApplicationInWeb.Models;
+using System.IO;
 
 namespace FirstApplicationInWeb.Controllers
 {
@@ -63,6 +64,20 @@ namespace FirstApplicationInWeb.Controllers
             return View();
         }
 
+        public ActionResult PictureUpload(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
+        }
+
         // POST: Movies/Create
         // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -109,6 +124,24 @@ namespace FirstApplicationInWeb.Controllers
                 return RedirectToAction("Index");
             }
             return View(movie);
+        }
+
+        [HttpPost]
+        public ActionResult PictureUpload(int id, HttpPostedFileBase file)
+        {
+            if(file != null)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/Images"), fileName);
+                file.SaveAs(path);
+                Movie movie = db.Movies.Find(id);
+                if(movie != null)
+                {
+                    movie.PictureUrl = "/Images/"+fileName;
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("Index");
         }
 
         // GET: Movies/Delete/5

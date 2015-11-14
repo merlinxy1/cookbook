@@ -28,6 +28,8 @@ namespace FirstApplicationInWeb.Models
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
         [StringLength(5)]
         public string Rating { get; set; }
+
+        public string PictureUrl { get; set; }
     }
 
     public class MovieDBContext : DbContext
